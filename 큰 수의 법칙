@@ -1,0 +1,45 @@
+# 큰 수의 법칙
+
+# 내 풀이
+import time
+start_time = time.time()
+
+n,m,k = map(int,input().split())
+num_list = list(map(int,input().split()))
+max_num = max(num_list)
+num_list.remove(max_num)
+sec_max_num = max(num_list)
+result = 0
+cnt = 0
+for _ in range(m):
+  if cnt == k:
+    result += sec_max_num
+    cnt = 0
+    continue
+  result += max_num
+  cnt += 1
+print(result)
+
+
+end_time = time.time()
+print(end_time - start_time)
+
+
+###################################
+# 교재 풀이
+import time
+start_time = time.time()
+
+n,m,k = map(int,input().split())
+num_list = list(map(int,input().split()))
+num_list.sort()
+max_num = num_list[n-1]
+sec_max_num = num_list[n-2]
+result = 0
+result += (max_num*k + sec_max_num)*(m // (k+1))
+m %= k+1
+result += m*max_num
+print(result)
+
+end_time = time.time()
+print(end_time - start_time)
