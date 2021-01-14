@@ -1,0 +1,50 @@
+# 왕실의 나이트
+# 내풀이
+#왕실의 나이트
+import time
+
+cur=input()
+
+start = time.time()
+
+result = 8
+if (cur[0] == 'a') or (cur[0] == 'h'):
+    result -= 4
+elif (cur[0] == 'b') or (cur[0] == 'g'):
+    result -= 2
+
+if (cur[1] == '1') or (cur[1] == '8'):
+    result -= 4
+elif (cur[1] == '2') or (cur[2] == '7'):
+    result -= 2
+    
+if (cur == 'a1') or (cur == 'h1') or (cur == 'a8') or (cur == 'h8'):
+    result += 2
+elif (cur == 'a2') or (cur == 'b1') or (cur == 'g1') or (cur == 'h2') or (cur == 'a7') or (cur == 'b8') or (cur == 'g8') or (cur == 'h7'):
+    result += 1
+
+print(result)
+
+print(time.time() - start)
+
+################################
+# 교재 풀이
+import time
+
+input_data = input()
+
+start_time = time.time()
+
+row = int(input_data[1])
+col = int(ord(input_data[0])) - int(ord('a')) + 1
+steps = [(-2,-1),(-1,-2),(1,-2),(2,-1),(2,1),(1,2),(-1,2),(-2,1)]
+
+result = 0
+for step in steps:
+  next_row = row + step[0]
+  next_col = col + step[1]
+  if next_row >= 1 and next_row<=8 and next_col >=1 and next_col <=8:
+    result += 1
+
+print(result)
+print(time.time() - start_time)
