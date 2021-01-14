@@ -1,0 +1,33 @@
+# 시각
+# 내 풀이
+import time
+
+n=int(input())
+start_time = time.time()
+
+result = (n//10+1)*(n%10+1)*6*10*6*10
+if n%10==3:
+  result -= (n//10+1)*(n%10)*5*9*5*9
+else:
+  result -= (n//10+1)*(n%10+1)*5*9*5*9
+
+print(result)
+print(time.time() - start_time)
+
+
+###########################
+# 교재 풀이
+import time
+
+h=int(input())
+
+start_time = time.time()
+
+count=0
+for i in range(h+1):
+  for j in range(60):
+    for k in range(60):
+      if '3' in str(i) + str(j) + str(k):
+        count += 1
+
+print(count)
